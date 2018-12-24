@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyTest</string>
+    <string name="title_home">首页</string>
+    <string name="title_store">商店</string>
+    <string name="title_shoppingCar">购物车</string>
+    <string name="title_me">我的账号</string>
+</resources>
