@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.ImageView;
 
+import com.example.administrator.test.MainActivity;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainPagerAdapter extends PagerAdapter {
@@ -20,10 +23,10 @@ public class MainPagerAdapter extends PagerAdapter {
     private Context mContext;
     private LayoutInflater mInflater;
 
-    public MainPagerAdapter(List<ImageView> items,Context context){
+    public MainPagerAdapter(Context context){
         mContext=context;
         mInflater=LayoutInflater.from(context);
-        mItems=items;
+        mItems=new ArrayList<>();
     }
 
     /**
@@ -34,12 +37,10 @@ public class MainPagerAdapter extends PagerAdapter {
      */
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View ret = null;
-
         //对ViewPager页号求摸取出View列表中要显示的项
         position %= mItems.size();
         Log.d("Adapter", "instantiateItem: position: " + position);
-        ret = mItems.get(position);
+        View ret = mItems.get(position);
         //如果View已经在之前添加到了一个父组件，则必须先remove，否则会抛出IllegalStateException。
         ViewParent viewParent = ret.getParent();
         if (viewParent != null) {
@@ -66,14 +67,25 @@ public class MainPagerAdapter extends PagerAdapter {
 
 
     @Override
-    public int getCount() {
-        int ret=0;
-
-        return ret;
+    public int getCount(){
+        return mItems.size();
     }
 
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
         return view==(View) o;
     }
+
+    public void addImageView(ImageView... imageViews){
+        for (ImageView imageView:imageViews) {
+            mItems.add(imageView);
+        }
+    }
+    public void setImageUrl(){
+    }
+
+    public static int getMaxScrollValue() {
+        return MAX_SCROLL_VALUE;
+    }
+
 }

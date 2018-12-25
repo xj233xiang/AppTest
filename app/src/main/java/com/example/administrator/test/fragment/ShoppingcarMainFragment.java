@@ -11,16 +11,14 @@ import android.view.ViewGroup;
 import com.example.administrator.test.R;
 
 public class ShoppingcarMainFragment extends Fragment {
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+
+
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root=inflater.inflate(R.layout.fragment_shoppingcar_main,container,false);
-        
-        return super.onCreateView(inflater, container, savedInstanceState);
+        View root=inflater.inflate(R.layout.fragment_shoppingcar_main,null);
+        return root;
     }
 }

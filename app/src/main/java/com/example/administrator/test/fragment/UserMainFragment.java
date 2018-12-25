@@ -11,16 +11,21 @@ import android.view.ViewGroup;
 import com.example.administrator.test.R;
 
 public class UserMainFragment extends Fragment {
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+
+    View root;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root=inflater.inflate(R.layout.fragment_user_main,container,false);
+        if(root==null){
+            root=inflater.inflate(R.layout.fragment_user_main,container,false);
+        }else {
+            ViewGroup parent=(ViewGroup)root.getParent();
+            if(parent!=null)
+                parent.removeView(root);
+        }
         
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return root;
     }
+
 }
